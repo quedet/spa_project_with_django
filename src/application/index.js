@@ -1,9 +1,3 @@
-import "../styles/index.scss"
-
-window.addEventListener("DOMContentLoaded", function (evt) {
-    console.log("Dom Ready !")
-})
-
 /**
  * VARIABLES
  */
@@ -63,6 +57,8 @@ myWebSocket.addEventListener("message", function (event) {
     const selector = document.querySelector(data.selector)
     selector.innerHTML = data.html
 
+    // Update URL
+    history.pushState({}, '', data.url)
     /**
      * Reassigns the events of the newly rendered HTML
      */
