@@ -29,7 +29,8 @@ class ExampleConsumer(JsonWebsocketConsumer):
         match data_received["action"]:
             case "Change page":
                 actions.send_page(self, data["page"])
-                
+            case "Add lap":
+                actions.add_lap(self)
                 
     def send_html(self, event):
         """Event: Send html to client"""

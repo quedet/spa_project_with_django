@@ -2,6 +2,7 @@ from asgiref.sync import async_to_sync
 from django.template.loader import render_to_string
 from django.urls import reverse
 from datetime import datetime
+from django.utils import timezone
 
 from app_template.forms import LoginForm, SignupForm
 
@@ -29,4 +30,18 @@ def send_page(self, page):
         "selector": "#main",
         "html": render_to_string(f"pages/{page}.html", context),
         "url": reverse(page)
+    })
+    
+def add_lap(self):
+    """Add lap to home page"""
+    # Send current time to client
+    # print(datetime.strftime(timezone.now(), "h:i:s"))
+    d = timezone.now()
+    
+    self.send_html({
+        "selector": "#laps",
+        "html": render_to_string("components/_lap.html", {
+            "time": timezone.localtime(d).strftime("%H:%M:%S"), 
+        }),
+        "append": True
     })
