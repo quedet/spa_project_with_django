@@ -3,6 +3,7 @@
  */
 // Webpack Dependencies
 const { merge } = require('webpack-merge')
+const path = require('path')
 
 // Common Webpack Config Import
 const common_config = require('./webpack.config.common')
@@ -18,6 +19,10 @@ module.exports = merge(common_config, {
         hot: true,
         devMiddleware: {
             writeToDisk: true
-        }
+        },
+        watchFiles: [
+            path.join(__dirname, '../backend/templates/**/*.html'),
+            path.join(__dirname, '../backend/**/*.py')
+        ]
     }
 })
