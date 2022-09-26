@@ -10,10 +10,17 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <script src="{% static 'js/index.js' %}" defer></script>
 </head>
-<body>
-    <h1>Welcome Back</h1>
-    <p>
-        
-    </p>
+<body data-host="{{ request.get_host }}" data-scheme="{{ request.scheme }}">
+    <header>
+        <nav id="nav" class="nav">
+            {% include 'components/_nav.html' %}
+        </nav>
+    </header>
+    <main id="main">
+        {% include page %}
+    </main>
+    <footer class="footer">
+        <p>My Footer</p>
+    </footer>
 </body>
 </html>

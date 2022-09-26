@@ -14,6 +14,7 @@ const common_config = require('./webpack.config.common')
 // Development configuration
 module.exports = merge(common_config, {
     mode: "development",
+    target: "browserslist",
     devtool: "source-map",
     devServer: {
         hot: true,

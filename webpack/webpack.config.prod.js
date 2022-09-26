@@ -18,6 +18,7 @@ const common_config = require('./webpack.config.common')
 // Development configuration
 module.exports = merge(common_config, {
     mode: "production",
+    target: "web",
     devtool: "source-map",
     optimization: {
         minimize: true,
